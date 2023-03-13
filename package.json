@@ -1,0 +1,29 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Shourya Pratap",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-session": "*",
+    "mongoose": "^6.6.5",
+    "nodeman": "^1.1.2",
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shouryapratap45/E-Commerce-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shouryapratap45/E-Commerce-App/issues"
+  },
+  "homepage": "https://github.com/shouryapratap45/E-Commerce-App#readme",
+  "description": ""
+}

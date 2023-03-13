@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="/enterpage/signupstyle.css">
+    <link rel="icon" type="image/jpg" href="/img/favicon.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  </head>
+  <body>
+    <div id="box">
+      <h1>Signup Form</h1><br><br>
+      <p>Name</p>
+      <input type="text" id="name" placeholder="Enter Name" required><br><br>
+      <p>Email</p>
+      <input type="email" id="email" placeholder="email-id" required><br><br>
+      <p>Password</p>
+      <input type="password" id="pswd" placeholder="password" required>
+      <i class="far fa-eye" id="eye"></i><br><br>
+      <input type="submit" id="subbtn" value="Submit"><br><br>
+      <div>
+        <p>Existing user <a href="/enterpage/login.html">click here</a> to login</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    let http;
+    let submit=document.getElementById('subbtn');
+    let name=document.getElementById('name');
+    let eml=document.getElementById('email');
+    let pswd=document.getElementById('pswd');
+    let eye=document.getElementById('eye');
+    const localhost="localhost";
+    eml.addEventListener('keyup',submitColor);
+    pswd.addEventListener('keyup',submitColor);
+    eye.addEventListener('click',showPassword);
+    submit.addEventListener('click',signing);
+
+    function submitColor(){
+        if(eml.value!='' && pswd.value!='')
+        {
+            submit.style.backgroundColor='#007BFF';
+            submit.style.color='white';
+        }  
+        else
+        {
+            submit.style.backgroundColor='#F0F0F0';
+            submit.style.color='black';
+        }
+    }
+
+    function showPassword(){
+      pswd.type=pswd.type==='password'?'text':'password';
+    }
+    function signing(){
+      if(name.value=='' || eml.value=='' || pswd.value=='')
+        return;
+      submit.style.backgroundColor='#007BFF';
+      http=new XMLHttpRequest();
+      http.open('POST',"/signing?name="+name.value+"&email="+eml.value+"&password="+pswd.value);
+      http.addEventListener('load',showloginform);
+      http.send();
+    }
+    function showloginform(){
+      if(http.responseText=='User exist')
+        alert(http.responseText);
+      else
+      {
+        alert("User registered successfully")
+        document.documentElement.innerHTML=http.responseText;  
+      }
+    }
+  </script>
+</html>  
